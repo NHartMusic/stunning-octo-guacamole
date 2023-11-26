@@ -12,19 +12,13 @@ export default class D3Chart {
 		const rects = svg.selectAll('rect')
 			.data(data)
 
-		rects.enter().append('rect')
+		rects.enter()
+			.append('rect')
 			.attr('x', (d, i) => i * 100)
 			.attr('y', 50)
 			.attr('width', 50)
 			.attr('height', d => d)
 			.attr('fill', 'grey')
-
-		// svg.append('rect')
-		// 	.attr('x', 50)
-		// 	.attr('y', 50)
-		// 	.attr('width', 100)
-		// 	.attr('height', 400)
-		// 	.attr('fill', 'grey')
-
+	
 	} 
 }
