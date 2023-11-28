@@ -16,8 +16,11 @@ export default class D3Chart {
 
         d3.json(url).then(data=> {
             const y = d3.scaleLinear()
-                .domain([0, d3.max(data, d =>  d.height)])
-                .range([0, Height])  
+                .domain([
+                    d3.min(data, d => d.height) * 0.95, 
+                    d3.max(data, d =>  d.height)
+                ])
+                .range([Height, 0])  
                 
             const x = d3.scaleBand()
                 .domain(data.map(d => d.name))
@@ -38,9 +41,9 @@ export default class D3Chart {
 
             rects.enter().append('rect')
                 .attr('x', d => x(d.name))
-                .attr('y', d => Height - y(d.height))
+                .attr('y', d => y(d.height))
                 .attr('width', x.bandwidth)
-                .attr('height', d => y(d.height))
+                .attr('height', d => Height - y(d.height))
                 .attr('fill', 'grey')
         })
     }
