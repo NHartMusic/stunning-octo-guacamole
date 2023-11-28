@@ -7,13 +7,19 @@ const Wrapper = styled.div`
   height: 100% !important;
 `
 
+const Container = styled.div`
+  margin: 20px;
+`
+
 class App extends Component {
   
   render() {
     return (
       <Wrapper>
         <Nav />
-        <ChartWrapper />
+        <Container>
+          <ChartWrapper />
+        </Container>
       </Wrapper>
     );
   }

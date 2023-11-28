@@ -21,6 +21,12 @@ export default class D3Chart {
                 .range([0, Width])
                 .padding(0.4)
 
+            const xAxisCall = d3.axisBottom(x)
+            svg.call(xAxisCall)
+
+            const yAxisCall = d3.axisLeft(y)
+            svg.call(yAxisCall)
+
             const rects = svg.selectAll('rect')
                 .data(data)
 
