@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import ChartWrapper from './ChartWrapper'
 import Nav from './Nav'
+
+const wrapper = styled.div`
+  height: 100% !important;
+`
 
 class App extends Component {
   
   render() {
     return (
-      <div className='App'>
+      <wrapper>
         <Nav />
         <ChartWrapper />
-      </div>
+      </wrapper>
     );
   }
 }

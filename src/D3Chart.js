@@ -10,6 +10,10 @@ export default class D3Chart {
             .attr('height', 500)
 
         d3.json(url).then(HeightsData=> {
+            const y = d3.scaleLinear()
+                .domain([0, 272])
+                .range([0, 500])          
+
             const rects = svg.selectAll('rect')
                 .data(HeightsData)
 
@@ -17,7 +21,7 @@ export default class D3Chart {
                 .attr('x', (d, i) => i * 100)
                 .attr('y', 50)
                 .attr('width', 50)
-                .attr('height', d => d.height)
+                .attr('height', d => y(d.height))
                 .attr('fill', 'grey')
         })
     }
