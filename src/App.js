@@ -5,22 +5,28 @@ import Nav from './Nav'
 
 const Wrapper = styled.div`
   height: 100% !important;
+  display: flex;
+  margin: 0 auto;
 `
 
 const Container = styled.div`
-  margin: 20px;
+  margin: 0 auto;
+  display: flex;
 `
 
 class App extends Component {
   
   render() {
     return (
+      <>
+      <Nav />
       <Wrapper>
-        <Nav />
+        
         <Container>
           <ChartWrapper />
         </Container>
       </Wrapper>
+      </>
     );
   }
 }
