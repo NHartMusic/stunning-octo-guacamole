@@ -14,6 +14,8 @@ export default class D3Chart {
             .append('g')
                 .attr('transform', `translate(${Margin.Left}, ${Margin.Top})`)
 
+      
+
         d3.json(url).then(data=> {
             const y = d3.scaleLinear()
                 .domain([
