@@ -34,12 +34,19 @@ export default class D3Chart {
 
             vis.yAxisGroup = vis.svg.append('g')
 
-        d3.json(url).then(data=> {
-            vis.data = data
-            d3.interval(() => {
-                vis.update()
-            }, 1000)
-        })
+            Promise.all([
+                d3.json('https://udemy-react-d3.firebaseio.com/tallest_men.json'),
+                d3.json('https://udemy-react-d3.firebaseio.com/tallest_women.json')
+            ]).then((datasets) => {
+                console.log(datasets)
+            })
+
+        // d3.json(url).then(data=> {
+        //     vis.data = data
+        //     d3.interval(() => {
+        //         vis.update()
+        //     }, 1000)
+        // })
     }
 
     update() {
