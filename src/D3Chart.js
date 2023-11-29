@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 
 const url = 'https://udemy-react-d3.firebaseio.com/tallest_men.json'
-const Margin = { Top: 10, Bottom: 50, Left: 50, Right: 10 }
+const Margin = { Top: 10, Bottom: 50, Left: 70, Right: 10 }
 const Width = 800 - Margin.Left - Margin.Right
 const Height = 500 - Margin.Top - Margin.Bottom
 
@@ -35,6 +35,19 @@ export default class D3Chart {
 
             const yAxisCall = d3.axisLeft(y)
             svg.append('g').call(yAxisCall)
+
+            svg.append('text')
+                .attr('x', Width / 2)
+                .attr('y', Height + 50)
+                .attr('text-anchor', 'middle')
+                .text("The World's Tallest Men")
+
+            svg.append('text')
+                .attr('x', -(Height / 2))
+                .attr('y', -50)
+                .attr('text-anchor', 'middle')
+                .text('Height in cm')
+                .attr('transform', 'rotate(-90)')
 
             const rects = svg.selectAll('rect')
                 .data(data)
