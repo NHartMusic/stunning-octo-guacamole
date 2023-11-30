@@ -1,6 +1,5 @@
 import * as d3 from 'd3'
 
-const url = 'https://udemy-react-d3.firebaseio.com/tallest_men.json'
 const Margin = { Top: 10, Bottom: 50, Left: 70, Right: 10 }
 const Width = 800 - Margin.Left - Margin.Right
 const Height = 500 - Margin.Top - Margin.Bottom
@@ -38,16 +37,19 @@ export default class D3Chart {
                 d3.json('https://udemy-react-d3.firebaseio.com/tallest_men.json'),
                 d3.json('https://udemy-react-d3.firebaseio.com/tallest_women.json')
             ]).then((datasets) => {
-                console.log(datasets)
-            })
+               const [men, women] = datasets
+               let flag = true
 
-        // d3.json(url).then(data=> {
-        //     vis.data = data
-        //     d3.interval(() => {
-        //         vis.update()
-        //     }, 1000)
-        // })
-    }
+               vis.data = men
+               vis.update()
+
+                d3.interval(() => {
+                    vis.data = flag ? men : women
+                    vis.update()
+                    flag =! flag
+                }, 1000)
+            })
+        }
 
     update() {
         const vis = this
