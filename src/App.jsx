@@ -16,20 +16,25 @@ const Container = styled.div`
 `
 
 class App extends Component {
-  
+  state = {
+    sex: 'men'
+  }
+
+  sexSelected = (sex) => this.setState({ sex })
+
   render() {
     return (
       <>
-      <Nav />
-      <Selector />
-      <Wrapper>
-        <Container>
-          <ChartWrapper />
-        </Container>
-      </Wrapper>
+        <Nav />
+        <Selector sexSelected={this.sexSelected} />
+        <Wrapper>
+          <Container>
+            <ChartWrapper sex={this.state.sex}/>
+          </Container>
+        </Wrapper>
       </>
-    );
+    )
   }
 }
 
-export default App;
+export default App

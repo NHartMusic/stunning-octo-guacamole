@@ -7,6 +7,10 @@ export default class ChartWrapper extends Component {
 		new D3Chart(this.refs.chart)
 	}
 
+	shouldComponentUpdate() {
+		return false
+	}
+
 	render() {
 		return <div ref='chart'></div>
 	}
