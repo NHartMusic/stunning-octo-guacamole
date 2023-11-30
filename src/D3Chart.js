@@ -47,7 +47,7 @@ export default class D3Chart {
                     vis.data = flag ? men : women
                     vis.update()
                     flag =! flag
-                }, 1000)
+                }, 10000)
             })
         }
 

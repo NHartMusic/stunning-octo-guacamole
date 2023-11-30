@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import ChartWrapper from './ChartWrapper'
 import Nav from './Nav'
+import Selector from './Selector'
 
 const Wrapper = styled.div`
   height: 100% !important;
@@ -20,8 +21,8 @@ class App extends Component {
     return (
       <>
       <Nav />
+      <Selector />
       <Wrapper>
-        
         <Container>
           <ChartWrapper />
         </Container>
