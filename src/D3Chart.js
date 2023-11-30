@@ -67,21 +67,28 @@ export default class D3Chart {
         .padding(0.4)
 
     const xAxisCall = d3.axisBottom(x)
-        vis.xAxisGroup.call(xAxisCall)
+        vis.xAxisGroup
+        .transition().duration(500)
+        .call(xAxisCall)
         
-
     const yAxisCall = d3.axisLeft(y)
-        vis.yAxisGroup.call(yAxisCall)
+        vis.yAxisGroup
+        .transition().duration(500)
+        .call(yAxisCall)
   
     // data join
     const rects = vis.svg.selectAll('rect')
         .data(vis.data)
     
     //exit
-    rects.exit().remove()
+    rects.exit()
+        .transition().duration(500)
+            .attr('height', 0)
+            .attr('y', Height)
+            .remove()
 
     // update 
-    rects
+    rects.transition().duration(500)
         .attr('x', d => x(d.name))
         .attr('y', d => y(d.height))
         .attr('width', x.bandwidth)
@@ -90,10 +97,12 @@ export default class D3Chart {
     // enter 
     rects.enter().append('rect')
         .attr('x', d => x(d.name))
-        .attr('y', d => y(d.height))
         .attr('width', x.bandwidth)
-        .attr('height', d => Height - y(d.height))
         .attr('fill', 'grey')
+        .attr('y', Height)
+        .transition().duration(500)
+            .attr('height', d => Height - y(d.height))
+            .attr('y', d => y(d.height))
 
         console.log(rects)
     }
